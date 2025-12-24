@@ -1,0 +1,54 @@
+ApplicationName,Vendor,ApplicationType
+Google App,Google,Search
+Google Play services,Google,Services
+System UI,Google,User Experience
+Phone,Google,Phone
+SherLock,Sherlock Team,Services
+Samsung Push Service,Samsung,Services
+Facebook,Facebook,Social Media
+Photos,Google,Images
+S Finder,Unknown,File Manager
+My Magazine,Unknown,News
+SmartcardService,Google,Services
+Samsung text-to-speech engine,Samsung,Services
+Nfc Service,Google,Services
+Bluetooth,Google,Services
+Battery,Google,Services
+Settings,Google,User Experience
+WhatsApp,Facebook,Messaging
+Unified Daemon,Unknown,Services
+Messenger,Unknown,Messaging
+Google Keyboard,Google,User Experience
+Cloud,Unknown,File Manager
+SecurityManagerService,Google,Services
+Recommended apps,Google,User Experience
+Geo News,Unknown,News
+Fingerprints,Google,Services
+Virgin Media WiFi,Virgin Media,Services
+Context Service,Google,Services
+Gmail,Google,E-mail
+Exchange services,Microsoft,Services
+S Planner,Unknown,Calendar
+Contacts,Google,Address Book
+ES File Explorer,EStrong,File Manager
+Chrome,Google,Web Browser
+Google+,Google,Social Media
+Calendar,Google,Calendar
+LogsProvider,Google,Services
+Calendar storage,Google,Services
+Hangouts,Google,Messaging
+S Health,Unknown,Unknown
+Messages,Google,Messaging
+Flipboard,Flipboard,News
+Waze,Waze,Navigation
+BadgeProvider,Unknown,Services
+Video Player,Google,Video
+Drive,Google,File Manager
+Google Play Music,Google,Audio
+Maps,Google,Navigation
+Skype,Microsoft,Messaging
+YouTube,Google,Video
+Google Play Store,Google,Shopping
+Galaxy Apps,Samsung,User Experience
+Gallery,Google,Image
+Moriarty,Sherlock Team,Malware
