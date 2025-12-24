@@ -1,0 +1,37 @@
+# bash include file "devel-04"
+# For Python Crack-AES & Paillier experimentation
+# 20190312 - for Python 3 -- py3 is required
+#
+# Extra libraries provided by DeapSECURE:
+# - pycrypto
+# - gmpy2
+# - phe (python-paillier)
+
+enable_lmod
+# dependencies of gmpy2
+module load gmp
+module load mpfr
+module load mpc
+
+# Essentials
+module load icc/18 impi/18
+module load python/3.6
+module load mpi4py     # For parallel computation later on
+module load numpy
+module load ipython
+
+# Extra toolboxes
+module load scipy
+module load pandas
+module load matplotlib
+
+
+# Trace from building software; not needed for running stuff:
+#module load icc/18
+#module load cmake
+#module load git
+
+module use /scratch-lustre/DeapSECURE/lmod
+module load DeapSECURE
+
+module list

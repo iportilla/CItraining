@@ -1,0 +1,165 @@
+
+The following have been reloaded with a version change:
+  1) libjpeg-turbo/2.0.2 => libjpeg-turbo/2.0.3
+
+
+The following have been reloaded with a version change:
+  1) py-numpy/1.17.3 => py-numpy/1.16.3
+
+
+The following have been reloaded with a version change:
+  1) py-numpy/1.16.3 => py-numpy/1.17.3
+
+
+Currently Loaded Modules:
+  1) slurm/20-11-5-1           21) py-numexpr/2.7.0
+  2) intel-mkl/2019.4.243      22) py-bottleneck/1.2.1
+  3) zlib/1.2.11               23) py-pytz/2019.3
+  4) libpng/1.6.37             24) py-setuptools/41.4.0
+  5) bzip2/1.0.8               25) py-cycler/0.10.0
+  6) freetype/2.10.1           26) py-kiwisolver/1.1.0
+  7) xz/5.2.4                  27) py-pyparsing/2.4.2
+  8) libtiff/4.0.10            28) libjpeg-turbo/2.0.3
+  9) openjpeg/2.3.1            29) py-pillow/6.2.0
+ 10) gmp/6.1.2                 30) py-pip/19.3
+ 11) mpfr/4.0.2                31) py-joblib/0.14.0
+ 12) mpc/1.1.0                 32) py-scipy/1.3.1
+ 13) DeapSECURE/2020           33) py-pandas/0.25.1
+ 14) python/3.7.3              34) py-scikit-learn/0.22.2.post1
+ 15) py-markupsafe/1.0         35) hdf5/1.10.5
+ 16) py-babel/2.6.0            36) py-h5py/2.9.0
+ 17) py-jinja2/2.10            37) py-tensorflow/1.13.1
+ 18) py-six/1.12.0             38) py-numpy/1.17.3
+ 19) py-jupyter/1.1.4          39) py-matplotlib/3.1.1
+ 20) py-python-dateutil/2.8.0  40) py-seaborn/0.11.1
+
+ 
+
+Pandas version: 0.25.1
+Scikit-learn version:  0.22.2.post1
+* shape: (273129, 20)
+* columns::
+ ['Unnamed: 0', 'ApplicationName', 'CPU_USAGE', 'UidRxBytes', 'UidRxPackets', 'UidTxBytes', 'UidTxPackets', 'cutime', 'guest_time', 'importance', 'lru', 'num_threads', 'otherPrivateDirty', 'priority', 'rss', 'state', 'stime', 'utime', 'vsize', 'cminflt']
+
+* info::
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 273129 entries, 0 to 273128
+Data columns (total 20 columns):
+Unnamed: 0           273129 non-null int64
+ApplicationName      273129 non-null object
+CPU_USAGE            273077 non-null float64
+UidRxBytes           273129 non-null int64
+UidRxPackets         273129 non-null int64
+UidTxBytes           273129 non-null int64
+UidTxPackets         273129 non-null int64
+cutime               273077 non-null float64
+guest_time           273077 non-null float64
+importance           273129 non-null int64
+lru                  273129 non-null int64
+num_threads          273077 non-null float64
+otherPrivateDirty    273129 non-null int64
+priority             273077 non-null float64
+rss                  273077 non-null float64
+state                273077 non-null object
+stime                273077 non-null float64
+utime                273077 non-null float64
+vsize                273077 non-null float64
+cminflt              0 non-null float64
+dtypes: float64(10), int64(8), object(2)
+memory usage: 41.7+ MB
+None
+
+* describe::
+
+          Unnamed: 0      CPU_USAGE  ...         vsize  cminflt
+count  273129.000000  273077.000000  ...  2.730770e+05      0.0
+mean   528153.204665       0.661832  ...  2.049264e+09      NaN
+std    287688.920866       3.207833  ...  1.179834e+08      NaN
+min         0.000000       0.000000  ...  0.000000e+00      NaN
+25%    280651.000000       0.050000  ...  1.958326e+09      NaN
+50%    551938.000000       0.130000  ...  2.026893e+09      NaN
+75%    783978.000000       0.370000  ...  2.125877e+09      NaN
+max    999994.000000     110.890000  ...  2.456613e+09      NaN
+
+[8 rows x 18 columns]
+
+Preprocessing:
+- dropped 3 columns: ['Unnamed: 0', 'cminflt', 'guest_time']
+- remaining missing data:
+CPU_USAGE      52
+cutime         52
+num_threads    52
+priority       52
+rss            52
+state          52
+stime          52
+utime          52
+vsize          52
+dtype: int64
+- dropping the rest of missing data
+- remaining shape: (273077, 17)
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+
+        CPU_USAGE  UidRxBytes  UidRxPackets  ...   stime   utime         vsize
+0            0.13           0             0  ...   180.0   311.0  2.064265e+09
+1            1.65           0             0  ...    67.0   210.0  2.047980e+09
+2            0.21           0             0  ...   395.0   542.0  2.106794e+09
+3            0.03           0             0  ...    43.0    39.0  1.893417e+09
+4            0.20           0             0  ...   401.0   464.0  2.204619e+09
+...           ...         ...           ...  ...     ...     ...           ...
+273124       1.79           0             0  ...    78.0    84.0  1.999364e+09
+273125       2.00           0             0  ...  1090.0  2827.0  2.154717e+09
+273126       0.19           0             0  ...  4038.0  4529.0  2.372964e+09
+273127       0.09           0             0  ...  2293.0  1867.0  2.127880e+09
+273128       0.02           0             0  ...   512.0   413.0  1.907130e+09
+
+[273077 rows x 16 columns]
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 273077 entries, 0 to 273128
+Data columns (total 16 columns):
+CPU_USAGE            273077 non-null float64
+UidRxBytes           273077 non-null int64
+UidRxPackets         273077 non-null int64
+UidTxBytes           273077 non-null int64
+UidTxPackets         273077 non-null int64
+cutime               273077 non-null float64
+importance           273077 non-null int64
+lru                  273077 non-null int64
+num_threads          273077 non-null float64
+otherPrivateDirty    273077 non-null int64
+priority             273077 non-null float64
+rss                  273077 non-null float64
+state                273077 non-null object
+stime                273077 non-null float64
+utime                273077 non-null float64
+vsize                273077 non-null float64
+dtypes: float64(8), int64(7), object(1)
+memory usage: 35.4+ MB
+None
+Step: Feature scaling with StandardScaler
+Traceback (most recent call last):
+  File "NN_Model-064n.py", line 41, in <module>
+    tmp = step_feature_scaling(Rec)
+  File "/home/wpurwant/Testbeds/DeapSECURE/deapsecure-mod03-ml-devel/handson/expts-sherlock/analysis_sherlock_ML.py", line 254, in step_feature_scaling
+    R.scaler.fit(df)
+  File "/shared/apps/auto/py-scikit-learn/0.22.2.post1-gcc-7.3.0-wpia/lib/python3.7/site-packages/sklearn/preprocessing/_data.py", line 669, in fit
+    return self.partial_fit(X, y)
+  File "/shared/apps/auto/py-scikit-learn/0.22.2.post1-gcc-7.3.0-wpia/lib/python3.7/site-packages/sklearn/preprocessing/_data.py", line 700, in partial_fit
+    force_all_finite='allow-nan')
+  File "/shared/apps/auto/py-scikit-learn/0.22.2.post1-gcc-7.3.0-wpia/lib/python3.7/site-packages/sklearn/utils/validation.py", line 531, in check_array
+    array = np.asarray(array, order=order, dtype=dtype)
+  File "/shared/apps/auto/py-numpy/1.17.3-gcc-7.3.0-byol/lib/python3.7/site-packages/numpy/core/_asarray.py", line 85, in asarray
+    return array(a, dtype, copy=False, order=order)
+ValueError: could not convert string to float: 'S'

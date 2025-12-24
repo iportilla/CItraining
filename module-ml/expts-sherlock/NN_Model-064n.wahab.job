@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+#SBATCH -J NN_Model-064n
+#SBATCH -o NN_Model-064n.out%j
+
+module load python
+
+module load py-numpy
+module load py-scipy
+module load py-pandas
+module load py-scikit-learn
+module load py-tensorflow
+module load py-matplotlib
+module load py-seaborn
+
+module list
+
+python3 NN_Model-064n.py

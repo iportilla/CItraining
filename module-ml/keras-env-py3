@@ -1,0 +1,42 @@
+# -*- sh -*-
+# bash / sh include file to set up shell environment in HPC
+# for KERAS experimentation
+#
+# This file is part of the DeapSECURE project (https://deapsecure.gitlab.io/)
+#
+# 20190114 - for Python 3
+# Last updated: 2022-12-01
+
+# ODU's way of detecting cluster name.
+# Please adapt to your own cluster setting.
+if [ -f /etc/cluster ]; then
+    CLUSTER_NAME=$(cat /etc/cluster)
+else
+    CLUSTER_NAME=
+fi
+
+case "$CLUSTER_NAME" in
+
+turing)
+    enable_lmod
+    module load python/3.6
+    module load numpy scipy
+    module load pandas
+    module load scikit-learn
+    module load ipython
+    module load cuda/9.1
+    module load tensorflow/1.10
+    module load keras/2.2
+    module use /scratch-lustre/DeapSECURE/lmod
+    module load DeapSECURE
+    ;;
+
+wahab)
+    # most of "module loads" are now subsumed under the "DeapSECURE" module below
+    module load DeapSECURE/2020
+    module load py-tensorflow
+    ;;
+
+esac
+
+module list

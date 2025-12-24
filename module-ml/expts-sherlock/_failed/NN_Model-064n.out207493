@@ -1,0 +1,209 @@
+
+The following have been reloaded with a version change:
+  1) libjpeg-turbo/2.0.2 => libjpeg-turbo/2.0.3
+
+
+The following have been reloaded with a version change:
+  1) py-numpy/1.17.3 => py-numpy/1.16.3
+
+
+The following have been reloaded with a version change:
+  1) py-numpy/1.16.3 => py-numpy/1.17.3
+
+
+Currently Loaded Modules:
+  1) slurm/20-11-5-1           21) py-numexpr/2.7.0
+  2) intel-mkl/2019.4.243      22) py-bottleneck/1.2.1
+  3) zlib/1.2.11               23) py-pytz/2019.3
+  4) libpng/1.6.37             24) py-setuptools/41.4.0
+  5) bzip2/1.0.8               25) py-cycler/0.10.0
+  6) freetype/2.10.1           26) py-kiwisolver/1.1.0
+  7) xz/5.2.4                  27) py-pyparsing/2.4.2
+  8) libtiff/4.0.10            28) libjpeg-turbo/2.0.3
+  9) openjpeg/2.3.1            29) py-pillow/6.2.0
+ 10) gmp/6.1.2                 30) py-pip/19.3
+ 11) mpfr/4.0.2                31) py-joblib/0.14.0
+ 12) mpc/1.1.0                 32) py-scipy/1.3.1
+ 13) DeapSECURE/2020           33) py-pandas/0.25.1
+ 14) python/3.7.3              34) py-scikit-learn/0.22.2.post1
+ 15) py-markupsafe/1.0         35) hdf5/1.10.5
+ 16) py-babel/2.6.0            36) py-h5py/2.9.0
+ 17) py-jinja2/2.10            37) py-tensorflow/1.13.1
+ 18) py-six/1.12.0             38) py-numpy/1.17.3
+ 19) py-jupyter/1.1.4          39) py-matplotlib/3.1.1
+ 20) py-python-dateutil/2.8.0  40) py-seaborn/0.11.1
+
+ 
+
+Pandas version: 0.25.1
+Scikit-learn version:  0.22.2.post1
+* shape: (273129, 20)
+* columns::
+ ['Unnamed: 0', 'ApplicationName', 'CPU_USAGE', 'UidRxBytes', 'UidRxPackets', 'UidTxBytes', 'UidTxPackets', 'cutime', 'guest_time', 'importance', 'lru', 'num_threads', 'otherPrivateDirty', 'priority', 'rss', 'state', 'stime', 'utime', 'vsize', 'cminflt']
+
+* info::
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 273129 entries, 0 to 273128
+Data columns (total 20 columns):
+Unnamed: 0           273129 non-null int64
+ApplicationName      273129 non-null object
+CPU_USAGE            273077 non-null float64
+UidRxBytes           273129 non-null int64
+UidRxPackets         273129 non-null int64
+UidTxBytes           273129 non-null int64
+UidTxPackets         273129 non-null int64
+cutime               273077 non-null float64
+guest_time           273077 non-null float64
+importance           273129 non-null int64
+lru                  273129 non-null int64
+num_threads          273077 non-null float64
+otherPrivateDirty    273129 non-null int64
+priority             273077 non-null float64
+rss                  273077 non-null float64
+state                273077 non-null object
+stime                273077 non-null float64
+utime                273077 non-null float64
+vsize                273077 non-null float64
+cminflt              0 non-null float64
+dtypes: float64(10), int64(8), object(2)
+memory usage: 41.7+ MB
+None
+
+* describe::
+
+          Unnamed: 0      CPU_USAGE  ...         vsize  cminflt
+count  273129.000000  273077.000000  ...  2.730770e+05      0.0
+mean   528153.204665       0.661832  ...  2.049264e+09      NaN
+std    287688.920866       3.207833  ...  1.179834e+08      NaN
+min         0.000000       0.000000  ...  0.000000e+00      NaN
+25%    280651.000000       0.050000  ...  1.958326e+09      NaN
+50%    551938.000000       0.130000  ...  2.026893e+09      NaN
+75%    783978.000000       0.370000  ...  2.125877e+09      NaN
+max    999994.000000     110.890000  ...  2.456613e+09      NaN
+
+[8 rows x 18 columns]
+
+Preprocessing:
+- dropped 3 columns: ['Unnamed: 0', 'cminflt', 'guest_time']
+- remaining missing data:
+CPU_USAGE      52
+cutime         52
+num_threads    52
+priority       52
+rss            52
+state          52
+stime          52
+utime          52
+vsize          52
+dtype: int64
+- dropping the rest of missing data
+- remaining shape: (273077, 17)
+
+After label-feature separation:
+        CPU_USAGE  UidRxBytes  UidRxPackets  ...   stime   utime         vsize
+0            0.13           0             0  ...   180.0   311.0  2.064265e+09
+1            1.65           0             0  ...    67.0   210.0  2.047980e+09
+2            0.21           0             0  ...   395.0   542.0  2.106794e+09
+3            0.03           0             0  ...    43.0    39.0  1.893417e+09
+4            0.20           0             0  ...   401.0   464.0  2.204619e+09
+...           ...         ...           ...  ...     ...     ...           ...
+273124       1.79           0             0  ...    78.0    84.0  1.999364e+09
+273125       2.00           0             0  ...  1090.0  2827.0  2.154717e+09
+273126       0.19           0             0  ...  4038.0  4529.0  2.372964e+09
+273127       0.09           0             0  ...  2293.0  1867.0  2.127880e+09
+273128       0.02           0             0  ...   512.0   413.0  1.907130e+09
+
+[273077 rows x 16 columns]
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 273077 entries, 0 to 273128
+Data columns (total 16 columns):
+CPU_USAGE            273077 non-null float64
+UidRxBytes           273077 non-null int64
+UidRxPackets         273077 non-null int64
+UidTxBytes           273077 non-null int64
+UidTxPackets         273077 non-null int64
+cutime               273077 non-null float64
+importance           273077 non-null int64
+lru                  273077 non-null int64
+num_threads          273077 non-null float64
+otherPrivateDirty    273077 non-null int64
+priority             273077 non-null float64
+rss                  273077 non-null float64
+state                273077 non-null object
+stime                273077 non-null float64
+utime                273077 non-null float64
+vsize                273077 non-null float64
+dtypes: float64(8), int64(7), object(1)
+memory usage: 35.4+ MB
+None
+Step: Converting all non-numerical features to one-hot encoding.
+Non-numeric features:
+- O  state
+
+Step: Feature scaling with StandardScaler
+After scaling:
+   CPU_USAGE  UidRxBytes  UidRxPackets  ...   state_R   state_S  state_Z
+0  -0.165792   -0.010623     -0.015068  ... -0.060473  0.064346 -0.00789
+1   0.308049   -0.010623     -0.015068  ... -0.060473  0.064346 -0.00789
+2  -0.140853   -0.010623     -0.015068  ... -0.060473  0.064346 -0.00789
+3  -0.196966   -0.010623     -0.015068  ... -0.060473  0.064346 -0.00789
+4  -0.143970   -0.010623     -0.015068  ... -0.060473  0.064346 -0.00789
+5  -0.047332   -0.003421      0.092426  ... -0.060473  0.064346 -0.00789
+6  -0.196966   -0.010623     -0.015068  ... -0.060473  0.064346 -0.00789
+7  -0.200083   -0.010623     -0.015068  ... -0.060473  0.064346 -0.00789
+8  -0.181379   -0.010623     -0.015068  ... -0.060473  0.064346 -0.00789
+9  -0.206318   -0.010623     -0.015068  ... -0.060473  0.064346 -0.00789
+
+[10 rows x 19 columns]
+
+Step: Train-test split  test_size=0.2  random_state=34
+- training dataset: 218461 records
+- testing dataset:  54616 records
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+WARNING:tensorflow:From /shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /shared/apps/auto/py-tensorflow/1.13.1-gcc-7.3.0-j7tz/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2021-06-16 10:50:43.376396: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2021-06-16 10:50:43.378359: I tensorflow/core/common_runtime/process_util.cc:71] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+
+Running neural network model now...
+Train on 218461 samples, validate on 54616 samples
+Epoch 1/10
+ - 10s - loss: 0.7222 - acc: 0.8121 - val_loss: 0.2991 - val_acc: 0.9263
+Epoch 2/10
+ - 10s - loss: 0.2283 - acc: 0.9461 - val_loss: 0.1800 - val_acc: 0.9598
+Epoch 3/10
+ - 10s - loss: 0.1485 - acc: 0.9669 - val_loss: 0.1227 - val_acc: 0.9713
+Epoch 4/10
+ - 10s - loss: 0.1053 - acc: 0.9768 - val_loss: 0.0909 - val_acc: 0.9801
+Epoch 5/10
+ - 10s - loss: 0.0810 - acc: 0.9816 - val_loss: 0.0725 - val_acc: 0.9818
+Epoch 6/10
+ - 10s - loss: 0.0653 - acc: 0.9844 - val_loss: 0.0589 - val_acc: 0.9857
+Epoch 7/10
+ - 10s - loss: 0.0541 - acc: 0.9876 - val_loss: 0.0500 - val_acc: 0.9902
+Epoch 8/10
+ - 10s - loss: 0.0462 - acc: 0.9906 - val_loss: 0.0431 - val_acc: 0.9912
+Epoch 9/10
+ - 10s - loss: 0.0406 - acc: 0.9919 - val_loss: 0.0379 - val_acc: 0.9925
+Epoch 10/10
+ - 10s - loss: 0.0355 - acc: 0.9928 - val_loss: 0.0338 - val_acc: 0.9934
+Traceback (most recent call last):
+  File "NN_Model-064n.py", line 96, in <module>
+    model_evaluate(model_1)
+NameError: name 'model_evaluate' is not defined

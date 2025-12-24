@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#HIDDEN_NEURONS= -- varied
+LEARNING_RATE=0.0003
+BATCH_SIZE=32
+EPOCHS=30
+
+for HIDDEN_NEURONS in 1 2 4 8 12 18 40 80; do
+    JOBNAME=model_1H${HIDDEN_NEURONS}N_lr${LEARNING_RATE}_bs${BATCH_SIZE}_e${EPOCHS}
+    echo "Training for hyperparams:" "$HIDDEN_NEURONS"  "$LEARNING_RATE"  "$BATCH_SIZE"  "$EPOCHS"
+    sbatch -J "$JOBNAME"  NN_Model_1H.slurm  "$HIDDEN_NEURONS"  "$LEARNING_RATE"  "$BATCH_SIZE"  "$EPOCHS"
+done
+
