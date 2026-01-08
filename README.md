@@ -196,16 +196,13 @@ graph TB
 **Key Concepts:**
 ```mermaid
 graph TB
-    subgraph "Paillier Cryptosystem"
-        A["Generate Keys<br/>p, q primes<br/>n = p × q"] --> B["Public Key<br/>n, g"]
-        A --> C["Private Key<br/>p, q"]
-    end
+    A["Plaintext: m1, m2"] --> B["Encrypt"]
+    B --> C["E(m1), E(m2)"]
+    C --> D["Addition Property"]
+    D --> E["E(m1) * E(m2)<br/>= E(m1 + m2)"]
     
-    subgraph "Homomorphic Operations"
-        D["E(m1) + E(m2)<br/>= E(m1 + m2)"] ✓
-        E["E(m1) × k<br/>= E(m1 × k)"] ✓
-        F["E(m1) × E(m2)<br/>NOT ALLOWED"] ✗
-    end
+    style D fill:#e1f5ff
+    style E fill:#c8e6c9
 ```
 
 **Practical Skills:**
