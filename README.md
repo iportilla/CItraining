@@ -165,6 +165,9 @@ graph TB
         E["Avalanche Effect<br/>Small key change →<br/>Completely different ciphertext"]
         F["Semantic Security<br/>Ciphertext reveals<br/>no information"]
     end
+    
+    C -.-> E
+    C -.-> F
 ```
 
 **Practical Skills:**
