@@ -70,7 +70,7 @@ flowchart LR
 flowchart TD
   K1[PaillierPublicKey + PaillierPrivateKey] -->|keypair_dump_jwk| K2[pub JSON / priv JSON]
   K2 -->|keypair_load_jwk| K1
-  V1[List[EncryptedNumber]] -->|envec_dump_json| V2[JSON with n + ciphertext/exponent pairs]
+  V1[EncryptedNumber list] -->|envec_dump_json| V2[JSON with n + ciphertext/exponent pairs]
   V2 -->|envec_load_json| V1
   I1[Encrypted 2D array + shape metadata] -->|enimg_dump_json| I2[EncryptedImage JSON]
   I2 -->|enimg_load_json| I1
