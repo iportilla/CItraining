@@ -26,15 +26,18 @@ graph TB
     BigData --> Session1["Session 1<br/>Pandas Fundamentals"]
     BigData --> Session2["Session 2<br/>Analytics with Pandas"]
     BigData --> Session3["Session 3<br/>Wrangling & Visualization"]
+    BigData --> Viz["Visualization notebook<br/>matplotlib & pandas plots"]
     
     Session1 --> Topics1["• Series & DataFrames<br/>• Loading data<br/>• Basic operations<br/>• Visualization"]
     Session2 --> Topics2["• Column operations<br/>• Filtering & sorting<br/>• Aggregation & grouping<br/>• Combining datasets"]
     Session3 --> Topics3["• Types of data<br/>• Missing & duplicate data<br/>• Exploratory visualization<br/>• Feature correlations"]
+    Viz --> TopicsViz["• Line, bar & pie charts<br/>• Titles, labels & ticks<br/>• pandas .plot(kind=...)<br/>• Comparing apps"]
     
     style BigData fill:#e8f5e9
     style Session1 fill:#c8e6c9
     style Session2 fill:#c8e6c9
     style Session3 fill:#c8e6c9
+    style Viz fill:#c8e6c9
 ```
 
 ---
@@ -46,6 +49,7 @@ module-bd/
 ├── BigData-session-1.ipynb          # Pandas fundamentals
 ├── BigData-session-2.ipynb          # Analytics with pandas
 ├── BigData-session-3.ipynb          # Wrangling & visualization
+├── BigData-visualization.ipynb      # matplotlib & pandas plotting (after Session 1)
 ├── avatars.csv                      # Sample dataset (5 records)
 ├── fig/                             # Visualization images
 │   ├── DataFrame.png                # DataFrame structure diagram
@@ -682,6 +686,61 @@ It comes from inside seaborn, not the notebook code, and the plots are still cor
 
 ---
 
+### 📓 BigData-visualization.ipynb - Visualization with matplotlib and pandas
+
+**Companion to:** the Visualization section of the Session 1 slides, adapted from the matplotlib material in
+textbook Chapter 7  
+**Duration:** 45-60 minutes  
+**Difficulty:** Beginner  
+**Prerequisites:** Session 1 (loading and selecting data); the optional challenge previews Session 2's `groupby`
+
+#### Notebook Sections
+
+1. Setup (imports; an optional `!pip install matplotlib seaborn` cell)
+2. Line Graphs, with titles, axis labels, tick marks, grid and axis limits
+3. Bar Charts (width, `align`, color codes)
+4. Pie Charts (labels, colors, percentages)
+5. Plotting pandas Data (the Sherlock `sherlock_mystery.csv` file)
+6. Summary & Further Resources
+
+#### Key Concepts Covered
+
+```python
+import matplotlib.pyplot as plt
+
+plt.plot(x_coords, y_coords, marker='o')        # line graph
+plt.title('Sales by Year'); plt.xlabel('Year'); plt.ylabel('Sales')
+plt.xticks([0, 1, 2, 3, 4], ['2016', '2017', '2018', '2019', '2020'])
+
+plt.bar(left_edges, heights, 5, align='edge', color=('r', 'g', 'b', 'c', 'm'))
+plt.pie(sales, labels=slice_labels, autopct='%1.0f%%')
+
+counts = df_mystery['ApplicationName'].value_counts()
+counts.plot(kind='bar')                          # pandas draws with matplotlib
+df_mystery['CPU_USAGE'].plot(kind='hist', bins=20)
+seaborn.boxplot(x='ApplicationName', y='num_threads', data=df_mystery)
+```
+
+#### Exercises
+
+Nine exercise cells with `#TODO` placeholders:
+- Swap the x and y lists and add markers; set the y range with `ylim` and change the title
+- Color the bars and label the axes; explain why default-width bars look thin
+- Color a pie chart and print percentages on it; check that the 4th quarter fills 43%
+- Box plot of `vsize` compared with `describe()`
+- App counts as a pie chart; a 20-bin histogram of `CPU_USAGE` (143 of the 200 values fall in the first bin)
+- *Challenge:* average `CPU_USAGE` per app as a bar chart (WhatsApp 0.273, Facebook 0.193)
+
+#### Notes
+
+- The notebook is saved without outputs; each plot appears when its cell runs.
+- Bars are centered on their x values by default in current matplotlib, and default pie colors start blue,
+  orange, green, red. The textbook's figures were made with an older version.
+- It runs with no errors or warnings on pandas 3.0.3, matplotlib 3.11 and seaborn 0.13.2, with or without
+  the exercises answered (apart from the seaborn box-plot `vert` warning noted for Session 3).
+
+---
+
 ## Datasets
 
 ### 1. avatars.csv
@@ -788,6 +847,7 @@ UidTxBytes: 0
 **Use Cases:**
 - Session 1: initial exploration, indexing, and plotting
 - Session 2: column operations, filtering, sorting, and grouping
+- Visualization notebook: line, box, bar, pie and histogram plots, and a box plot per app
 
 #### sherlock_mystery_2apps.csv
 
@@ -1717,6 +1777,8 @@ The Big Data module teaches practical data processing skills through three progr
 2. **Session 2** - Practice data wrangling with real-world data
 3. **Session 3** - Clean a large dataset and explore it visually
 
+Plus **BigData-visualization.ipynb**, a plotting notebook to use after Session 1.
+
 **Key Datasets:**
 - avatars.csv - Simple learning data
 - sherlock/ - Real mobile app performance data
@@ -1733,7 +1795,7 @@ The Big Data module teaches practical data processing skills through three progr
 - Data visualization
 
 **Next Steps:**
-1. Complete all three sessions
+1. Complete the three sessions and the visualization notebook
 2. Practice with provided datasets
 3. Solve data mysteries
 4. Apply skills to your own data
