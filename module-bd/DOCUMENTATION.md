@@ -54,6 +54,8 @@ module-bd/
 ├── fig/                             # Visualization images
 │   ├── DataFrame.png                # DataFrame structure diagram
 │   └── Series.png                   # Series structure diagram
+├── slides/                          # Lecture slides (PDF)
+│   └── Intro-to-Python-Pandas-Fundamentals.pdf  # Session 1 + visualization deck (22 slides)
 ├── sherlock/                        # Mobile app performance data
 │   ├── app_info.csv                 # App metadata (53 apps)
 │   ├── app_info_missing.csv         # App names without metadata (98)
@@ -82,6 +84,7 @@ module-bd/
 ### 📓 BigData-session-1.ipynb - Pandas Fundamentals
 
 **Lesson episode:** [Fundamentals of Pandas](https://deapsecure.gitlab.io/deapsecure-lesson02-bd/10-pandas-intro/index.html)  
+**Slides:** [Intro to Python: Pandas Fundamentals](slides/Intro-to-Python-Pandas-Fundamentals.pdf) (PDF, 22 slides; the visualization section goes with `BigData-visualization.ipynb`)  
 **Duration:** 45-60 minutes  
 **Difficulty:** Beginner  
 **Prerequisites:** Python basics
@@ -688,8 +691,8 @@ It comes from inside seaborn, not the notebook code, and the plots are still cor
 
 ### 📓 BigData-visualization.ipynb - Visualization with matplotlib and pandas
 
-**Companion to:** the Visualization section of the Session 1 slides, adapted from the matplotlib material in
-textbook Chapter 7  
+**Companion to:** the Visualization section of the [Session 1 slides](slides/Intro-to-Python-Pandas-Fundamentals.pdf)
+(slides 14–20), adapted from the matplotlib material in textbook Chapter 7  
 **Duration:** 45-60 minutes  
 **Difficulty:** Beginner  
 **Prerequisites:** Session 1 (loading and selecting data); the optional challenge previews Session 2's `groupby`
