@@ -5,6 +5,7 @@ Welcome to the Big Data module documentation! This guide explains all code and d
 ## 📚 Table of Contents
 
 - [Overview](#overview)
+  - [Requirements](#requirements)
 - [Folder Structure](#folder-structure)
 - [Jupyter Notebooks](#jupyter-notebooks)
 - [Datasets](#datasets)
@@ -41,6 +42,16 @@ graph TB
     style Session2 fill:#c8e6c9
     style Session3 fill:#c8e6c9
     style Viz fill:#c8e6c9
+```
+
+### Requirements
+
+- **Python 3.8+** and **pandas 2.0+**, plus Jupyter, matplotlib and seaborn. The warm-up map also needs plotly.
+- pandas 2.0 is needed for the warm-up's dates from the 1490s. pandas 1.x can only store dates from 1677 onward,
+  so the date cells fail there with `OutOfBoundsDatetime`. Check your version with `pandas.__version__`.
+
+```bash
+pip install "pandas>=2.0" matplotlib seaborn plotly jupyter
 ```
 
 ---
@@ -137,7 +148,7 @@ VOYAGES = pandas.DataFrame({"voyage": [1, 2, 3, 4], "num_ships": [3, 17, 6, 4], 
 VOYAGES.shape; VOYAGES.dtypes
 SHIPS[SHIPS["ship_type"] == "caravel"]                 # boolean filter
 SHIPS.isna().sum()                                     # missing values per column
-VOYAGES["depart_date"] = pandas.to_datetime(VOYAGES["depart_date"])
+VOYAGES["depart_date"] = to_dates(VOYAGES["depart_date"])   # to_datetime, also for 1492
 VOYAGES["duration_days"] = (VOYAGES["return_date"] - VOYAGES["depart_date"]).dt.days
 VOYAGES.sort_values("duration_days", ascending=False)
 LANDFALLS.groupby("voyage")["place"].count()
@@ -172,10 +183,15 @@ Excel cannot store dates before 1900, so the notebook gives a formula that shift
   The lines on the map join one landfall to the next; they are not the routes the ships sailed.
 - **The duration plot needs Exercise 5.1.** The plot uses the `duration_days` column that students create there.
   If they skip the exercise, the plot cell fails with a `KeyError`.
+- **Dates from the 1490s need pandas 2.0+.** Before pandas 3.0, `pandas.to_datetime("1492-08-03")` fails with
+  `OutOfBoundsDatetime`, because those versions store dates in nanoseconds, which only reach back to 1677.
+  The import cell defines a small `to_dates()` helper: it calls `pandas.to_datetime()` when that works and
+  otherwise stores the dates to the second (`astype("datetime64[s]")`, pandas 2.x). pandas 1.x cannot store
+  these dates at all. On pandas 2.x, `read_csv(..., parse_dates=["date"])` silently leaves them as text.
 - **The map needs plotly.** It draws its coastlines without downloading data. If plotly is missing, run
   `!pip install plotly` first.
 - The notebook is saved without outputs. It runs with no errors on pandas 3.0.3, matplotlib 3.11 and plotly 6.7.0,
-  with the exercises answered.
+  and on pandas 2.3.3, with the exercises answered.
 
 ---
 

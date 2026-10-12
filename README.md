@@ -82,7 +82,8 @@ code/
 
 ### Prerequisites
 
-- Python 3.7+
+- Python 3.8+
+- pandas 2.0+ (the Big Data module's warm-up uses dates from the 1490s, which pandas 1.x cannot store)
 - Jupyter Notebook or JupyterLab
 - Required libraries (see individual notebook sections)
 
@@ -785,7 +786,7 @@ These notebooks are part of the **DeapSECURE** training program at Old Dominion 
 
 ## Quick Start Checklist
 
-- [ ] Python 3.7+ installed
+- [ ] Python 3.8+ and pandas 2.0+ installed
 - [ ] Jupyter installed (`pip install jupyter`)
 - [ ] Required libraries installed
 - [ ] Notebooks downloaded
