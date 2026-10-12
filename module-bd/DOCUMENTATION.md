@@ -76,6 +76,7 @@ module-bd/
 │   └── Series.png                   # Series structure diagram
 ├── slides/                          # Lecture slides (PDF and PowerPoint)
 │   ├── Intro-to-Python-Pandas-Fundamentals.pdf  # Session 1 + visualization deck (22 slides)
+│   ├── Intro-to-Python-Pandas-Fundamentals.pptx # Editable PowerPoint of the same deck
 │   ├── Pandas-Warmup-Columbus.pptx  # Warm-up deck (16 slides, speaker notes included)
 │   ├── Pandas-Warmup-Columbus.pdf   # PDF of Pandas-Warmup-Columbus.pptx (16 pages)
 │   ├── Pandas-Warmup-Columbus-export.pptx  # Export of the online warm-up deck, with map page and Excel answers added (16 slides)
