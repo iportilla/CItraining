@@ -23,17 +23,20 @@ The Big Data module teaches practical data processing skills using **pandas**, a
 graph TB
     BigData["Big Data Module<br/>Data Processing with Pandas"]
     
+    BigData --> Warmup["Warm-up notebook<br/>Columbus's voyages"]
     BigData --> Session1["Session 1<br/>Pandas Fundamentals"]
     BigData --> Session2["Session 2<br/>Analytics with Pandas"]
     BigData --> Session3["Session 3<br/>Wrangling & Visualization"]
     BigData --> Viz["Visualization notebook<br/>matplotlib & pandas plots"]
     
+    Warmup --> TopicsW["• Your first DataFrame<br/>• Filtering & missing values<br/>• Grouping & counting<br/>• Bar chart & map"]
     Session1 --> Topics1["• Series & DataFrames<br/>• Loading data<br/>• Basic operations<br/>• Visualization"]
     Session2 --> Topics2["• Column operations<br/>• Filtering & sorting<br/>• Aggregation & grouping<br/>• Combining datasets"]
     Session3 --> Topics3["• Types of data<br/>• Missing & duplicate data<br/>• Exploratory visualization<br/>• Feature correlations"]
     Viz --> TopicsViz["• Line, bar & pie charts<br/>• Titles, labels & ticks<br/>• pandas .plot(kind=...)<br/>• Comparing apps"]
     
     style BigData fill:#e8f5e9
+    style Warmup fill:#c8e6c9
     style Session1 fill:#c8e6c9
     style Session2 fill:#c8e6c9
     style Session3 fill:#c8e6c9
@@ -46,16 +49,26 @@ graph TB
 
 ```
 module-bd/
+├── BigData-warmup-columbus.ipynb    # Warm-up: first DataFrame (before Session 1)
 ├── BigData-session-1.ipynb          # Pandas fundamentals
 ├── BigData-session-2.ipynb          # Analytics with pandas
 ├── BigData-session-3.ipynb          # Wrangling & visualization
 ├── BigData-visualization.ipynb      # matplotlib & pandas plotting (after Session 1)
 ├── avatars.csv                      # Sample dataset (5 records)
+├── columbus/                        # Warm-up tables as CSV, for the Excel questions
+│   ├── voyages.csv                  # One row per voyage (4)
+│   ├── ships.csv                    # One row per ship (7; blank = unknown captain)
+│   └── landfalls.csv                # One row per main landfall (21), with lat/lon
 ├── fig/                             # Visualization images
+│   ├── columbus-voyages.svg         # Map of Columbus's voyages (warm-up header)
 │   ├── DataFrame.png                # DataFrame structure diagram
 │   └── Series.png                   # Series structure diagram
-├── slides/                          # Lecture slides (PDF)
-│   └── Intro-to-Python-Pandas-Fundamentals.pdf  # Session 1 + visualization deck (22 slides)
+├── slides/                          # Lecture slides (PDF and PowerPoint)
+│   ├── Intro-to-Python-Pandas-Fundamentals.pdf  # Session 1 + visualization deck (22 slides)
+│   ├── Pandas-Warmup-Columbus.pptx  # Warm-up deck (16 slides, speaker notes included)
+│   ├── Pandas-Warmup-Columbus.pdf   # PDF of Pandas-Warmup-Columbus.pptx (16 pages)
+│   ├── Pandas-Warmup-Columbus-export.pptx  # Export of the online warm-up deck, with map page and Excel answers added (16 slides)
+│   └── Pandas-Warmup-Columbus-export.pdf  # PDF of the export (16 pages, online deck's fonts embedded)
 ├── sherlock/                        # Mobile app performance data
 │   ├── app_info.csv                 # App metadata (53 apps)
 │   ├── app_info_missing.csv         # App names without metadata (98)
@@ -81,13 +94,99 @@ module-bd/
 
 ## Jupyter Notebooks
 
+### 📓 BigData-warmup-columbus.ipynb - Warm-up: Your First DataFrame
+
+**Data source:** the Wikipedia article [Voyages of Christopher Columbus](https://en.wikipedia.org/wiki/Voyages_of_Christopher_Columbus)  
+**Slides:** [Pandas Warm-up: Columbus's Voyages](slides/Pandas-Warmup-Columbus.pdf) (PDF, 16 slides; editable [PowerPoint](slides/Pandas-Warmup-Columbus.pptx) with speaker notes). The same deck in the online deck's fonts: [PDF](slides/Pandas-Warmup-Columbus-export.pdf), [PowerPoint](slides/Pandas-Warmup-Columbus-export.pptx)  
+**Duration:** 30-45 minutes  
+**Difficulty:** Beginner  
+**Prerequisites:** Python basics (lists and dictionaries)
+
+A short warm-up before Session 1. It introduces the `DataFrame` with three small tables about Columbus's four
+voyages to the Americas (1492–1504). The tables are small enough to check by eye, so students can focus on the pandas
+commands before moving to the larger security datasets.
+
+#### Notebook Sections
+
+1. Creating a `DataFrame` from a dictionary (`VOYAGES`: one row per voyage)
+2. Inspecting it with `head`, `shape`, `columns`, `dtypes` and `info`
+3. Selecting columns (`df["col"]`, `df[["a", "b"]]`) and rows (`.loc`, `.iloc`)
+4. Ships and captains (`SHIPS`): filtering rows with a condition, and finding missing values
+5. Dates, sorting and new columns, plus a matplotlib bar chart of the voyage durations
+6. Grouping and counting the places visited (`LANDFALLS`: one row per landfall)
+7. Mapping the landfalls with plotly
+8. Bonus: combining tables with `merge`
+9. Try it in Excel: the same questions on the CSV files in `columbus/`, then loading a CSV with `pandas.read_csv`
+
+The suggested solutions are in the last code cell, followed by the answers to the Excel questions.
+
+#### Datasets Used
+
+All three tables are typed into the notebook. Section 9 also uses copies saved as CSV in `columbus/`:
+
+| Table | One row per | Columns |
+|---|---|---|
+| `VOYAGES` | voyage (4) | `voyage`, `depart_date`, `return_date`, `depart_port`, `num_ships`, `first_landfall` |
+| `SHIPS` | ship (7, from voyages 1 and 4) | `voyage`, `ship`, `ship_type`, `captain`, `owner_or_master` |
+| `LANDFALLS` | main landfall (21) | `voyage`, `date`, `place`, `modern_country`, plus `lat` and `lon` added in Section 7 |
+
+#### Key Concepts Covered
+
+```python
+VOYAGES = pandas.DataFrame({"voyage": [1, 2, 3, 4], "num_ships": [3, 17, 6, 4], ...})
+VOYAGES.shape; VOYAGES.dtypes
+SHIPS[SHIPS["ship_type"] == "caravel"]                 # boolean filter
+SHIPS.isna().sum()                                     # missing values per column
+VOYAGES["depart_date"] = pandas.to_datetime(VOYAGES["depart_date"])
+VOYAGES["duration_days"] = (VOYAGES["return_date"] - VOYAGES["depart_date"]).dt.days
+VOYAGES.sort_values("duration_days", ascending=False)
+LANDFALLS.groupby("voyage")["place"].count()
+LANDFALLS["modern_country"].value_counts()
+px.line_geo(map_data, lat="lat", lon="lon", color="voyage", markers=True)
+pandas.merge(SHIPS, VOYAGES, on="voyage")
+pandas.read_csv("columbus/ships.csv")              # blank cells become NaN
+```
+
+#### Exercises
+
+Seventeen exercise cells with `#TODO` placeholders, including:
+- Print the shape and data types; select columns and a row with `.loc`
+- Find the caravels, the ships Columbus captained, and the ships whose captain is unknown
+- Compute and sort the voyage durations (the 2nd voyage is longest at 991 days; the 1st is shortest at 213)
+- Make a bar chart of `num_ships`
+- Count the landfalls per voyage, and find the place visited more than once (Hispaniola, 3 times)
+- *Challenge:* the first and last landfall date of each voyage
+- Map only the first voyage
+- Load `columbus/landfalls.csv` with `read_csv` and check the Excel answer for the most common country
+
+Section 9 also has seven questions to answer in Excel (filters, a date formula, `COUNTIF` and PivotTables).
+Excel cannot store dates before 1900, so the notebook gives a formula that shifts the dates by 800 years.
+
+#### Notes
+
+- **Missing captains are on purpose.** The article names the four ships of the 4th voyage but not their captains,
+  so those cells are `None`. Section 4 uses them to teach missing values.
+- **Dates follow the article's infobox** where its text disagrees (for example, the 4th voyage departs on
+  12 May 1502 in the infobox but 9 May in the text). Only the main landfalls are listed, not every island.
+- **The coordinates are approximate.** The article does not give coordinates, so each bay or island was estimated.
+  The lines on the map join one landfall to the next; they are not the routes the ships sailed.
+- **The duration plot needs Exercise 5.1.** The plot uses the `duration_days` column that students create there.
+  If they skip the exercise, the plot cell fails with a `KeyError`.
+- **The map needs plotly.** It draws its coastlines without downloading data. If plotly is missing, run
+  `!pip install plotly` first.
+- The notebook is saved without outputs. It runs with no errors on pandas 3.0.3, matplotlib 3.11 and plotly 6.7.0,
+  with the exercises answered.
+
+---
+
 ### 📓 BigData-session-1.ipynb - Pandas Fundamentals
 
 **Lesson episode:** [Fundamentals of Pandas](https://deapsecure.gitlab.io/deapsecure-lesson02-bd/10-pandas-intro/index.html)  
 **Slides:** [Intro to Python: Pandas Fundamentals](slides/Intro-to-Python-Pandas-Fundamentals.pdf) (PDF, 22 slides; the visualization section goes with `BigData-visualization.ipynb`)  
 **Duration:** 45-60 minutes  
 **Difficulty:** Beginner  
-**Prerequisites:** Python basics
+**Prerequisites:** Python basics  
+**Warm-up (optional):** [BigData-warmup-columbus.ipynb](BigData-warmup-columbus.ipynb), with [slides](slides/Pandas-Warmup-Columbus.pdf) (PDF, 16 slides; also as [PowerPoint](slides/Pandas-Warmup-Columbus.pptx))
 
 #### Learning Objectives
 
@@ -1346,7 +1445,7 @@ graph TB
 
 **Step 1: Set Up Environment**
 ```bash
-pip install pandas numpy matplotlib seaborn jupyter
+pip install pandas numpy matplotlib seaborn plotly jupyter
 ```
 
 **Step 2: Start Jupyter**
@@ -1354,7 +1453,8 @@ pip install pandas numpy matplotlib seaborn jupyter
 jupyter notebook
 ```
 
-**Step 3: Open Session 1**
+**Step 3: Warm Up, then Open Session 1**
+- Start with `BigData-warmup-columbus.ipynb` for a short first look at DataFrames
 - Navigate to `BigData-session-1.ipynb`
 - Run cells sequentially
 - Modify code and experiment

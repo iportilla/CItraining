@@ -1,0 +1,5 @@
+voyage,depart_date,return_date,depart_port,num_ships,first_landfall
+1,1492-08-03,1493-03-04,Palos,3,San Salvador
+2,1493-09-24,1496-06-11,Cadiz,17,Dominica
+3,1498-05-30,1500-08-23,Sanlucar,6,Trinidad
+4,1502-05-12,1504-11-07,Cadiz,4,Martinique

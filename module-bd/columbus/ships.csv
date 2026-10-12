@@ -1,0 +1,8 @@
+voyage,ship,ship_type,captain,owner_or_master
+1,Santa Maria,carrack,Christopher Columbus,Juan de la Cosa
+1,Pinta,caravel,Martin Alonso Pinzon,Francisco Martin Pinzon
+1,Nina,caravel,Vicente Yanez Pinzon,Juan Nino
+4,Capitana,caravel,Christopher Columbus,
+4,Gallega,caravel,,
+4,Vizcaina,caravel,,
+4,Santiago de Palos,caravel,,
